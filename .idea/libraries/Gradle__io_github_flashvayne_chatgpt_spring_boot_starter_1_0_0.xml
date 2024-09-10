@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: io.github.flashvayne:chatgpt-spring-boot-starter:1.0.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.github.flashvayne" artifactId="chatgpt-spring-boot-starter" version="1.0.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.flashvayne/chatgpt-spring-boot-starter/1.0.0/457ac5790e41ca45cbd711f216dca09b763f8ded/chatgpt-spring-boot-starter-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
