@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/reservation_list.css"> <!-- CSS 파일 링크 -->
+    <script src="/js/reservation_list.js" defer></script> <!-- JavaScript 파일 링크 -->
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="http://localhost:8080/main">HOME</a>
+    <a href="http://localhost:8080/reservation_list">RESERVATION</a>
+    <a href="#event">EVENT</a>
+    <a href="#mypage">MYPAGE</a>
+    <a id="auth-button" class="auth-button" href="#">LOGIN</a>
+</div>
+
+<!-- Search Form -->
+<div class="search-form">
+    <div class="form-group">
+        <label for="checkin">Check-in Date</label>
+        <input type="date" id="checkin" name="checkin">
+    </div>
+
+    <div class="form-group">
+        <label for="checkout">Check-out Date</label>
+        <input type="date" id="checkout" name="checkout">
+    </div>
+
+    <div class="form-group">
+        <label>Dog Size</label>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <label for="small_count">Small</label>
+                <div class="number-control">
+                    <button type="button" onclick="decrement('small_count')">-</button>
+                    <input type="number" id="small_count" name="small_count" min="0" value="0">
+                    <button type="button" onclick="increment('small_count')">+</button>
+                </div>
+            </div>
+            <div class="checkbox-item">
+                <label for="medium_count">Medium</label>
+                <div class="number-control">
+                    <button type="button" onclick="decrement('medium_count')">-</button>
+                    <input type="number" id="medium_count" name="medium_count" min="0" value="0">
+                    <button type="button" onclick="increment('medium_count')">+</button>
+                </div>
+            </div>
+            <div class="checkbox-item">
+                <label for="large_count">Large</label>
+                <div class="number-control">
+                    <button type="button" onclick="decrement('large_count')">-</button>
+                    <input type="number" id="large_count" name="large_count" min="0" value="0">
+                    <button type="button" onclick="increment('large_count')">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit">Search</button>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+    <!-- Hotel List -->
+    <ul class="hotel-list">
+        <li class="hotel-item">
+            <img src="hotel1.jpg" alt="Hotel Image">
+            <div class="hotel-details">
+                <div class="hotel-name">Hotel Name 1</div>
+                <div class="hotel-info">Detailed info about the hotel. This might include amenities, location, and more.</div>
+                <div class="hotel-price">$120 per night</div>
+            </div>
+        </li>
+        <li class="hotel-item">
+            <img src="hotel2.jpg" alt="Hotel Image">
+            <div class="hotel-details">
+                <div class="hotel-name">Hotel Name 2</div>
+                <div class="hotel-info">Detailed info about the hotel. This might include amenities, location, and more.</div>
+                <div class="hotel-price">$150 per night</div>
+            </div>
+        </li>
+        <!-- Add more hotel items as needed -->
+    </ul>
+</div>
+<script src="/js/reservation_list.js" defer></script>
+<!-- Content of reservation_list.html -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkInDate = localStorage.getItem('checkInDate');
+        const checkOutDate = localStorage.getItem('checkOutDate');
+        const smallCount = localStorage.getItem('smallCount') || 0;
+        const mediumCount = localStorage.getItem('mediumCount') || 0;
+        const largeCount = localStorage.getItem('largeCount') || 0;
+
+        if (checkInDate) {
+            document.getElementById('checkin').value = checkInDate;
+        }
+        if (checkOutDate) {
+            document.getElementById('checkout').value = checkOutDate;
+        }
+        document.getElementById('small_count').value = smallCount;
+        document.getElementById('medium_count').value = mediumCount;
+        document.getElementById('large_count').value = largeCount;
+    });
+</script>
+</body>
+</html>
+
+</body>
+</html>

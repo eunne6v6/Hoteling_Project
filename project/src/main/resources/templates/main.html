@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="/css/main.css"> <!-- CSS 파일 링크 -->
+    <script src="/js/main.js" defer></script> <!-- JavaScript 파일 링크 -->
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="http://localhost:8080/main">HOME</a>
+    <a href="http://localhost:8080/reservation_list">RESERVATION</a>
+    <a href="#event">EVENT</a>
+    <a href="#mypage">MYPAGE</a>
+    <a id="auth-button" class="auth-button" href="#">LOGIN</a>
+</div>
+
+<!-- Search Form -->
+<div class="search-form">
+<!--    <form action="/reservation_list" method="get">-->
+    <div class="form-group">
+        <label for="checkin">Check-in Date</label>
+        <input type="date" id="checkin" name="checkin">
+    </div>
+
+    <div class="form-group">
+        <label for="checkout">Check-out Date</label>
+        <input type="date" id="checkout" name="checkout">
+    </div>
+
+    <div class="form-group">
+        <label>Dog Size</label>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <label for="small_count">Small</label>
+                <div class="number-control">
+                    <button type="button" onclick="decrement('small_count')">-</button>
+                    <input type="number" id="small_count" name="small_count" min="0" value="0">
+                    <button type="button" onclick="increment('small_count')">+</button>
+                </div>
+            </div>
+            <div class="checkbox-item">
+                <label for="medium_count">Medium</label>
+                <div class="number-control">
+                    <button type="button" onclick="decrement('medium_count')">-</button>
+                    <input type="number" id="medium_count" name="medium_count" min="0" value="0">
+                    <button type="button" onclick="increment('medium_count')">+</button>
+                </div>
+            </div>
+            <div class="checkbox-item">
+                <label for="large_count">Large</label>
+                <div class="number-control">
+                    <button type="button" onclick="decrement('large_count')">-</button>
+                    <input type="number" id="large_count" name="large_count" min="0" value="0">
+                    <button type="button" onclick="increment('large_count')">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/main.js" defer></script>
+    <form action="/reservation_list" method="get">
+    <button type="submit">Search</button>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+    <!-- Main Image -->
+    <div class="main-image"></div>
+
+    <!-- Event Preview -->
+    <div class="event-preview">
+        <div class="event-item">
+            <img src="event1.jpg" alt="Event Image 1">
+            <p>Event Title 1</p>
+        </div>
+        <div class="event-item">
+            <img src="event2.jpg" alt="Event Image 2">
+            <p>Event Title 2</p>
+        </div>
+        <div class="event-item">
+            <img src="event3.jpg" alt="Event Image 3">
+            <p>Event Title 3</p>
+        </div>
+        <div class="event-item">
+            <img src="event4.jpg" alt="Event Image 4">
+            <p>Event Title 4</p>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="banner1.jpg" alt="Banner Image 1">
+        <img src="banner2.jpg" alt="Banner Image 2">
+        <img src="banner3.jpg" alt="Banner Image 3">
+    </div>
+</div>
+<script>
+    // 검색 값을 Local Storage에 저장하는 함수
+    function saveSearchValues() {
+        const checkInDate = document.getElementById('checkin').value;
+        const checkOutDate = document.getElementById('checkout').value;
+        const smallCount = document.getElementById('small_count').value;
+        const mediumCount = document.getElementById('medium_count').value;
+        const largeCount = document.getElementById('large_count').value;
+
+        localStorage.setItem('checkInDate', checkInDate);
+        localStorage.setItem('checkOutDate', checkOutDate);
+        localStorage.setItem('smallCount', smallCount);
+        localStorage.setItem('mediumCount', mediumCount);
+        localStorage.setItem('largeCount', largeCount);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowDate = tomorrow.toISOString().split('T')[0];
+
+        document.getElementById('checkin').value = today;
+        document.getElementById('checkout').value = tomorrowDate;
+
+        // 로그인 버튼 상태 초기화
+        initializeAuthButton();
+    });
+</script>
+</body>
+</html>
